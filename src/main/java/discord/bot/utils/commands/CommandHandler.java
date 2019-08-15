@@ -8,6 +8,7 @@ import discord.bot.command.bot.info.WebsiteCommand;
 import discord.bot.command.bot.managing.ForcePropertiesSaveCommand;
 import discord.bot.command.bot.managing.SetGameCommand;
 import discord.bot.command.bot.managing.SetPrefixCommand;
+import discord.bot.command.bot.wow.CoolCommand;
 import discord.bot.command.bot.wow.RaidCommand;
 import discord.bot.command.misc.*;
 import discord.bot.command.server.managing.*;
@@ -58,6 +59,7 @@ public class CommandHandler {
 
         wowCommands = new HashMap<>();
         wowCommands.put(CommandEnum.RAID_MODE.getCommandName(), new RaidCommand(CommandEnum.RAID_MODE.getCommandName()));
+        wowCommands.put(CommandEnum.COOL_ZORK.getCommandName(), new CoolCommand(CommandEnum.COOL_ZORK.getCommandName()));
 
         serverCommands = new HashMap<>();
         serverCommands.put(CommandEnum.USER_EVENT_CHANNEL.getCommandName(), new SetUserEventChannelCommand(CommandEnum.USER_EVENT_CHANNEL.getCommandName()));

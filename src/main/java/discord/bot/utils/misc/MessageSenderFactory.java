@@ -5,6 +5,9 @@ import net.dv8tion.jda.core.entities.TextChannel;
 import net.dv8tion.jda.core.entities.User;
 import org.apache.log4j.Logger;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
+
 public class MessageSenderFactory {
 
 
@@ -47,4 +50,10 @@ public class MessageSenderFactory {
         }
     }
 
+    public void sendSafeFile(TextChannel channel, File image) {
+        if(channel.canTalk()){
+            channel.sendFile(image).queue(null, throwable -> logger.error("Couldn't send message to : " + channel.getName() + " on server : " + channel.getGuild().getId()));
+        }
+
+    }
 }

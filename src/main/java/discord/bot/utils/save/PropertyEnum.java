@@ -1,7 +1,7 @@
 package discord.bot.utils.save;
 
 public enum PropertyEnum {
-    AUTOROLE("autoRole","Role set quand quelqu'un rejoint et qu'on est en raid mode", ""),
+    AUTOROLE("autoRole","Role set quand quelqu'un rejoint et qu'on est en raid mode", "Raider PU"),
     USEREVENTCHANNEL("userEventChannel","Salon où le bot va mettre les notifs", ""),
     USEREVENTENABLED("userEventEnabled","Les messages d'accueil / départ sont activés ou non", ""),
     RAIDMODESTATUS("raidModeStatus", "Statut actuel du mode raid", "off"),

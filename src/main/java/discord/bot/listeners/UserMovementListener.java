@@ -3,10 +3,8 @@ package discord.bot.listeners;
 import discord.bot.utils.misc.MessageSenderFactory;
 import discord.bot.utils.save.PropertyEnum;
 import discord.bot.utils.save.ServerPropertiesManager;
-import net.dv8tion.jda.core.entities.Guild;
-import net.dv8tion.jda.core.entities.Member;
-import net.dv8tion.jda.core.entities.TextChannel;
-import net.dv8tion.jda.core.entities.User;
+import net.dv8tion.jda.core.EmbedBuilder;
+import net.dv8tion.jda.core.entities.*;
 import net.dv8tion.jda.core.events.guild.member.GuildMemberJoinEvent;
 import net.dv8tion.jda.core.events.guild.member.GuildMemberLeaveEvent;
 import net.dv8tion.jda.core.exceptions.InsufficientPermissionException;
@@ -14,9 +12,17 @@ import net.dv8tion.jda.core.hooks.ListenerAdapter;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
+
 public class UserMovementListener extends ListenerAdapter {
 
     private static Logger logger = Logger.getLogger(UserMovementListener.class);
+    private final String imgPath = "welcomeFond.jpg";
 
     @Override
     public void onGuildMemberJoin(GuildMemberJoinEvent event) {
@@ -63,7 +69,8 @@ public class UserMovementListener extends ListenerAdapter {
     }
 
     private void messageBienvenueJoinServeur(User user,TextChannel channel){
-        MessageSenderFactory.getInstance().sendSafeMessage(channel,":punch: Welcome : " + user.getAsMention() + " [Join]");
+        File myPicture = new File(imgPath);
+        MessageSenderFactory.getInstance().sendSafeFile(channel, myPicture);
     }
     private void messageDepartServeur(User u, TextChannel c){
         MessageSenderFactory.getInstance().sendSafeMessage(c,"See you in a better world : " + u.getName() + " [Leave] :cry:");

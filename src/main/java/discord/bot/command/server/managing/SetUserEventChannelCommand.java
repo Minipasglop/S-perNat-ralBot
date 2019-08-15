@@ -8,7 +8,7 @@ import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 public class SetUserEventChannelCommand extends ICommand {
 
     private final String HELP = "Définis le salon dans lequel tu veux envoyer les messages d'arrivée / départ. \nUsage : `!"+ this.commandName +" nom du salon`";
-    private final String COMMAND_SUCCESS = "C'est bon je sais où spammer maintenant.\nFais gaffe d'avoir le `!annonceActivee on` pour que ça fonctionne.";
+    private final String COMMAND_SUCCESS = "C'est bon je sais où spammer maintenant.\nFais gaffe d'avoir le `!annonce on` pour que ça fonctionne.";
     private final String COMMAND_FAILED = "Hééé sa marsh pa, apail Vigo";
 
     public SetUserEventChannelCommand(String commandName) {

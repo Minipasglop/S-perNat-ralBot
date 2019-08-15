@@ -2,8 +2,9 @@ package discord.bot.command;
 
 public enum CommandEnum {
     USER_EVENT_CHANNEL("salonAnnonce"),
-    USER_EVENT_TOGGLING("annonceActivee"),
+    USER_EVENT_TOGGLING("annonce"),
     RAID_MODE("raid"),
+    COOL_ZORK("cool"),
     HELP("aled"),
     INFO("info"),
     SERVER_SETTINGS("serverconf"),

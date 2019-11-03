@@ -13,10 +13,12 @@ import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 
 import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.MalformedURLException;
 import java.net.URL;
 
 public class UserMovementListener extends ListenerAdapter {
@@ -68,12 +70,41 @@ public class UserMovementListener extends ListenerAdapter {
         }
     }
 
-    private void messageBienvenueJoinServeur(User user,TextChannel channel){
-        File myPicture = new File(imgPath);
-        MessageSenderFactory.getInstance().sendSafeFile(channel, myPicture);
+    private void messageBienvenueJoinServeur(User user,TextChannel channel)  {
+        try {
+            final BufferedImage image = ImageIO.read(new File(imgPath));
+            Graphics g = image.getGraphics();
+            g.setFont(new Font("MV Boli",Font.PLAIN,10));
+            g.setFont(g.getFont().deriveFont(150f));
+            g.drawString("BIENVENUE", 1050, 900);
+            g.setFont(g.getFont().deriveFont(100f));
+            g.drawString(user.getName() + "#" + user.getDiscriminator(), 1050, 1000);
+            g.drawString("BIENVENUE CHEZ SUPERNATURAL! ", 650, 1100);
+            g.dispose();
+            File outputBonjourImage = new File("bonjourImage.png");
+            ImageIO.write(image, "png", outputBonjourImage);
+            MessageSenderFactory.getInstance().sendSafeFile(channel, outputBonjourImage);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
-    private void messageDepartServeur(User u, TextChannel c){
-        MessageSenderFactory.getInstance().sendSafeMessage(c,"See you in a better world : " + u.getName() + " [Leave] :cry:");
+    private void messageDepartServeur(User user, TextChannel channel){
+        try {
+            final BufferedImage image = ImageIO.read(new File(imgPath));
+            Graphics g = image.getGraphics();
+            g.setFont(new Font("MV Boli",Font.PLAIN,10));
+            g.setFont(g.getFont().deriveFont(150f));
+            g.drawString("ADIEU", 1050, 900);
+            g.setFont(g.getFont().deriveFont(100f));
+            g.drawString(user.getName() + "#" + user.getDiscriminator(), 950, 1000);
+            g.drawString("BONNE ROUTE!", 975, 1100);
+            g.dispose();
+            File outputAdieuImage = new File("adieuImage.png");
+            ImageIO.write(image, "png", outputAdieuImage);
+            MessageSenderFactory.getInstance().sendSafeFile(channel, outputAdieuImage);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 

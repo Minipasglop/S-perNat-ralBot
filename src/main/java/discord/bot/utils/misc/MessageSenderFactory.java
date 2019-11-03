@@ -41,7 +41,6 @@ public class MessageSenderFactory {
         if(!author.isBot()) {
             author.openPrivateChannel().queue((privateChannel -> privateChannel.sendMessage(message).queue(null, throwable -> sendSafeMessage(callbackChannel, callBackMessage))));
         }
-
     }
 
     public void sendSafePrivateMessage(User author, MessageEmbed message, TextChannel callbackChannel, String callBackMessage){
@@ -54,6 +53,5 @@ public class MessageSenderFactory {
         if(channel.canTalk()){
             channel.sendFile(image).queue(null, throwable -> logger.error("Couldn't send message to : " + channel.getName() + " on server : " + channel.getGuild().getId()));
         }
-
     }
 }
